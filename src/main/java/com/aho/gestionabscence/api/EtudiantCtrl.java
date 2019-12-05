@@ -1,5 +1,7 @@
 package com.aho.gestionabscence.api;
 
+import com.aho.gestionabscence.dao.ClasseDao;
+import com.aho.gestionabscence.model.Classe;
 import com.aho.gestionabscence.model.Etudiant;
 import com.aho.gestionabscence.service.EtudiantService;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,12 +22,16 @@ public class EtudiantCtrl {
 
     private EtudiantService etudiantService;
 
+
+
     @PostMapping("/add")
     public ResponseEntity<Etudiant> add(@Valid@RequestBody Etudiant etudiant,
-                                        @Valid@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dob){
+                                        @Valid@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dob,
+                                        @PathParam("classeid") long classeid){
             try{
+
                 etudiant.setDateDeNaissance(dob);
-                return new ResponseEntity(etudiantService.save(etudiant), HttpStatus.OK);
+                return new ResponseEntity(etudiantService.save(etudiant, classeid), HttpStatus.OK);
             }
             catch( Exception e){
                 return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

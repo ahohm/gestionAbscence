@@ -1,7 +1,9 @@
 package com.aho.gestionabscence.batchBean;
 
+import com.aho.gestionabscence.dao.AbscenceDao;
 import com.aho.gestionabscence.dao.EtudiantDao;
 import com.aho.gestionabscence.dao.MatiereDao;
+import com.aho.gestionabscence.model.Abscence;
 import com.aho.gestionabscence.model.Classe;
 import com.aho.gestionabscence.model.Etudiant;
 import com.aho.gestionabscence.model.Matiere;
@@ -26,31 +28,26 @@ public class CalculateAbscenceBatchBean {
     private EtudiantDao etudiantDao;
 
     @Autowired
-    private MatiereDao matiereService;
+    private MatiereDao matiereDao;
 
     @Autowired
     private EtudiantService etudiantService;
+
+    @Autowired
+    private AbscenceDao abscenceDao;
 
 
     @Autowired
     private MailConfig mailConfig;
 
+
+
+
     /*@Scheduled(cron = "0 17 * * FRI")*/
     @Scheduled(cron = "0/5 * * * * *")
     public void calculateAbscence(){
-        logger.warn("nbr of student is {}",etudiantDao.findAll().size());
-
+        logger.info("Student => {}",etudiantDao.findAll().size());
         List<Etudiant> etudiants = etudiantDao.findAll();
-
-        for ( Etudiant etudiant: etudiants) {
-            List<Classe> classes = null;
-            classes.add(etudiant.getClasse());
-            List<Matiere> matieres = matiereService.findByClassesEquals(classes);
-            for (Matiere matiere:matieres) {
-
-            }
-            System.out.println("etudiant");
-        }
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost(this.mailConfig.getHost());
@@ -58,13 +55,38 @@ public class CalculateAbscenceBatchBean {
         mailSender.setUsername(this.mailConfig.getUsername());
         mailSender.setPassword(this.mailConfig.getPassword());
 
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom("noReply@no.replay");
-        mailMessage.setTo("ahmed.hmayer@gmail.com");
-        mailMessage.setCc("Test");
-        mailMessage.setText("spring boot test mail sender");
 
-        mailSender.send(mailMessage);
+
+
+        for ( Etudiant etudiant: etudiants) {
+//            logger.error(etudiant.getNom()+" "+etudiant.getPrenom());
+
+            List<Matiere> matieres = matiereDao.findAllByClasses(etudiant.getClasse());
+//            logger.warn("matiers ::"+matieres.size()+"");
+
+            for (Matiere matiere:matieres) {
+//                logger.info("matier :: " + matiere.getLibel());
+                List<Abscence> abscences = abscenceDao.findAllByMatiereAndEtudiant(matiere, etudiant);
+            if (abscences.size()*1.5> matiere.getPermit()){
+                logger.error("eliminated ::: NAME :: /*"+etudiant.getPrenom()+"*/ MATIERE ::"+matiere.getLibel()+", abscence ::"+abscences.size()*1.5);
+
+                SimpleMailMessage mailMessage = new SimpleMailMessage();
+                mailMessage.setFrom("noReply@no.replay");
+                mailMessage.setTo(etudiant.getEmail());
+                mailMessage.setCc("Elimination");
+                mailMessage.setText("mr."+etudiant.getNom()+" "+etudiant.getPrenom()+". \n " +
+                        "you have been eliminated from the exam of "+matiere.getLibel()+", \n because " +
+                        "you passed the permit number of abscence("+matiere.getPermit()+"), " +
+                        "you've done "+abscences.size()*1.5+" hours of abscence. \n we are sorry for you");
+
+                mailSender.send(mailMessage);
+            }
+            }
+
+        }
+
+
+
 
 
 

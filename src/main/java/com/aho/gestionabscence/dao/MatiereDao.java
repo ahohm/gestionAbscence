@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface MatiereDao extends JpaRepository<Matiere, Long> {
-    List<Matiere> findByClassesEquals(List<Classe> classes);
+
+
+    List<Matiere> findAllByClasses(Classe classe);
 }

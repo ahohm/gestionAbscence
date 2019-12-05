@@ -8,10 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface AbscenceDao extends JpaRepository<Abscence, Long> {
 
-    @Query("SELECT count(id) FROM Abscence u WHERE u.etudiant_id = 1 and u.matiere_id = 1")
-    Collection<Abscence> findAllAbscence();
+    List<Abscence> findAllByMatiereAndEtudiant(Matiere matiere, Etudiant etudiant);
+
+
 }

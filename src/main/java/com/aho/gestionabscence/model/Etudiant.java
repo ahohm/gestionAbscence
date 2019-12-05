@@ -3,6 +3,7 @@ package com.aho.gestionabscence.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.swing.*;
@@ -57,5 +58,17 @@ public class Etudiant {
         this.prenom = prenom;
         this.email = email;
         this.dateDeNaissance = dateDeNaissance;
+    }
+
+    @Override
+    public String toString() {
+        return "Etudiant{" +
+                "matricule='" + matricule + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", dateDeNaissance=" + dateDeNaissance +
+                ", classe=" + classe +
+                '}';
     }
 }
