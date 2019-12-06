@@ -44,7 +44,7 @@ public class CalculateAbscenceBatchBean {
 
 
     /*@Scheduled(cron = "0 17 * * FRI")*/
-    @Scheduled(cron = "0/5 * * * * *")
+    @Scheduled(cron = "0 * * * * *")
     public void calculateAbscence(){
         logger.info("Student => {}",etudiantDao.findAll().size());
         List<Etudiant> etudiants = etudiantDao.findAll();
