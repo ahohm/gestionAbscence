@@ -13,11 +13,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import java.util.List;
+import java.util.Properties;
 
 @Component
 public class CalculateAbscenceBatchBean {
@@ -40,13 +44,15 @@ public class CalculateAbscenceBatchBean {
     @Autowired
     private MailConfig mailConfig;
 
+    @Autowired
+    private JavaMailSenderImpl javaMailSender;
+
 
 
 
     /*@Scheduled(cron = "0 17 * * FRI")*/
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0/10 * * * * *")
     public void calculateAbscence(){
-        logger.info("Student => {}",etudiantDao.findAll().size());
         List<Etudiant> etudiants = etudiantDao.findAll();
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
@@ -54,6 +60,20 @@ public class CalculateAbscenceBatchBean {
         mailSender.setPort(this.mailConfig.getPort());
         mailSender.setUsername(this.mailConfig.getUsername());
         mailSender.setPassword(this.mailConfig.getPassword());
+
+        Properties javaMailProperties = new Properties();
+        javaMailProperties.put("mail.smtp.starttls.enable", "true");
+        javaMailProperties.put("mail.smtp.auth", "true");
+        javaMailProperties.put("mail.transport.protocol", "smtp");
+        javaMailProperties.put("mail.debug", "true");
+
+//        Properties props = new Properties();
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.smtp.host", "smtp.gmail.com");
+//        props.put("mail.smtp.port", "587");
+
+        mailSender.setJavaMailProperties(javaMailProperties);
 
 
 
@@ -68,12 +88,12 @@ public class CalculateAbscenceBatchBean {
 //                logger.info("matier :: " + matiere.getLibel());
                 List<Abscence> abscences = abscenceDao.findAllByMatiereAndEtudiant(matiere, etudiant);
             if (abscences.size()*1.5> matiere.getPermit()){
-                logger.error("eliminated ::: NAME :: /*"+etudiant.getPrenom()+"*/ MATIERE ::"+matiere.getLibel()+", abscence ::"+abscences.size()*1.5);
+                logger.debug("eliminated ::: NAME :: /*"+etudiant.getPrenom()+"*/ MATIERE ::"+matiere.getLibel()+", abscence ::"+abscences.size()*1.5);
 
                 SimpleMailMessage mailMessage = new SimpleMailMessage();
                 mailMessage.setFrom("noReply@no.replay");
-                mailMessage.setTo(etudiant.getEmail());
-                mailMessage.setCc("Elimination");
+                mailMessage.setTo(etudiant.getEmail().toString());
+                mailMessage.setCc(etudiant.getEmail());
                 mailMessage.setText("mr."+etudiant.getNom()+" "+etudiant.getPrenom()+". \n " +
                         "you have been eliminated from the exam of "+matiere.getLibel()+", \n because " +
                         "you passed the permit number of abscence("+matiere.getPermit()+"), " +
@@ -84,12 +104,6 @@ public class CalculateAbscenceBatchBean {
             }
 
         }
-
-
-
-
-
-
     }
 
 }
