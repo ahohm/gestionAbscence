@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -67,6 +68,7 @@ public class CalculateAbscenceBatchBean {
         javaMailProperties.put("mail.transport.protocol", "smtp");
         javaMailProperties.put("mail.debug", "true");
 
+        /*we can set properties from here*/
 //        Properties props = new Properties();
 //        props.put("mail.smtp.auth", "true");
 //        props.put("mail.smtp.starttls.enable", "true");
@@ -92,7 +94,8 @@ public class CalculateAbscenceBatchBean {
 
                 SimpleMailMessage mailMessage = new SimpleMailMessage();
                 mailMessage.setFrom("noReply@no.replay");
-                mailMessage.setTo(etudiant.getEmail().toString());
+                mailMessage.setSubject("Elimination");
+
                 mailMessage.setCc(etudiant.getEmail());
                 mailMessage.setText("mr."+etudiant.getNom()+" "+etudiant.getPrenom()+". \n " +
                         "you have been eliminated from the exam of "+matiere.getLibel()+", \n because " +
