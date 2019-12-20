@@ -1,49 +1,42 @@
 package com.aho.gestionabscence.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Abscence {
+public class Elimination {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @ManyToOne
     private Etudiant etudiant;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @ManyToOne
     private Matiere matiere;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
-    private Classe classe;
+    private boolean isEliminated;
 
-    private LocalDate date;
-
+    public Elimination(Etudiant etudiant, Matiere matiere, boolean isEliminated) {
+        this.etudiant = etudiant;
+        this.matiere = matiere;
+        this.isEliminated = isEliminated;
+    }
 
     @Override
     public String toString() {
-        return "Abscence{" +
+        return "Elimination{" +
                 "id=" + id +
                 ", etudiant=" + etudiant +
                 ", matiere=" + matiere +
-                ", classe=" + classe +
-                ", date=" + date +
+                ", isEliminated=" + isEliminated +
                 '}';
     }
 }

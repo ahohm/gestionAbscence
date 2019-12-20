@@ -21,6 +21,7 @@ import java.util.List;
 public class EtudiantCtrl {
 
     private EtudiantService etudiantService;
+    private ClasseDao classeDao;
 
 
 
@@ -59,9 +60,12 @@ public class EtudiantCtrl {
     }
 
     @PutMapping("/{matricule}")
-    public ResponseEntity<Etudiant> update(@PathVariable String matricule, @RequestBody Etudiant etudiant){
+    public ResponseEntity<Etudiant> update(@Valid@RequestBody Etudiant etudiant,
+                                           @Valid@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dob,
+                                           @PathParam("classeid") long classeid){
         try{
-            return new ResponseEntity(etudiantService.update(matricule, etudiant),HttpStatus.OK);
+            etudiant.setDateDeNaissance(dob);
+            return new ResponseEntity(etudiantService.update(classeid, etudiant),HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -69,13 +73,13 @@ public class EtudiantCtrl {
     }
 
     @DeleteMapping("{matricule}")
-    public ResponseEntity<Void>  delete(@PathVariable String matricule){
+    public ResponseEntity<Boolean>  delete(@PathVariable String matricule){
         try{
-            etudiantService.delete(matricule);
-            return new ResponseEntity(HttpStatus.OK);
+
+            return new ResponseEntity(etudiantService.delete(matricule),HttpStatus.OK);
         }
         catch(Exception e){
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
     }
 }

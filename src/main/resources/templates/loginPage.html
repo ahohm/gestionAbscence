@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <title>Login</title>
+</head>
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+
+<!-- /login?error=true -->
+<div th:if="${#request.getParameter('error') == 'true'}"  style="color:red;margin:10px 0px;">
+    Login Failed!!!<br />
+    Reason :
+    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}" th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+    </span>
+
+</div>
+
+
+
+<div class="row">
+    <aside class="col-sm-4">
+
+    </aside> <!-- col.// -->
+    <aside class="col-sm-4">
+
+
+
+        <div class="card">
+            <article class="card-body">
+                <h1 class="card-title mb-4 mt-1">Sign in</h1>
+
+                <hr>
+                <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+                    <div class="form-group">
+                        <input name="username" class="form-control" placeholder="username" type="text">
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <input class="form-control" placeholder="*****" type="password" name="password">
+                    </div> <!-- form-group// -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                            </div> <!-- form-group// -->
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a class="small" href="#">Admin only</a>
+                        </div>
+                    </div> <!-- .row// -->
+                    <br>
+                    Username/pass:
+                    <ul>
+                        <li>dbuser1/123</li>
+                        <li>dbadmin1/123</li>
+                    </ul>
+                </form>
+            </article>
+        </div> <!-- card.// -->
+
+    </aside> <!-- col.// -->
+    <aside class="col-sm-4">
+
+    </aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<h3>Enter user name and password:</h3>
+<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+    <table>
+        <tr>
+            <td>User:</td>
+            <td><input type='text' name='username' value=''></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type='password' name='password' /></td>
+        </tr>
+        <tr>
+            <td>Remember Me?</td>
+            <td><input type="checkbox" name="remember-me" /></td>
+        </tr>
+        <tr>
+            <td><button type="submit" class="btn btn-success">Submit</button></td>
+
+        </tr>
+    </table>
+</form>
+
+<br>
+Username/pass:
+<ul>
+    <li>dbuser1/123</li>
+    <li>dbadmin1/123</li>
+</ul>
+
+-->

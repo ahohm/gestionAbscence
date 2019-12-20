@@ -14,8 +14,8 @@ public class ClasseService {
 
     private ClasseDao classeDao;
 
-    public Classe save(Classe etudiant){
-        return classeDao.save(etudiant);
+    public Classe save(Classe classe){
+        return classeDao.save(classe);
     }
 
     public List<Classe> findAll(){

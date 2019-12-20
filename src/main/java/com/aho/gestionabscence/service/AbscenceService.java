@@ -2,6 +2,8 @@ package com.aho.gestionabscence.service;
 
 import com.aho.gestionabscence.dao.AbscenceDao;
 import com.aho.gestionabscence.model.Abscence;
+import com.aho.gestionabscence.model.Etudiant;
+import com.aho.gestionabscence.model.Matiere;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,10 @@ public class AbscenceService {
     public void delete(long id){
         Abscence abscence = getOneById(id).get();
         abscenceDao.delete(abscence);
+    }
+
+    public List<Abscence> findAllByMatiereAndEtudiant(Matiere matiere, Etudiant etudiant){
+        return abscenceDao.findAllByMatiereAndEtudiant(matiere, etudiant);
     }
 
 }

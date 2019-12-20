@@ -33,10 +33,25 @@ public class Matiere {
     @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Abscence> abscences;
 
+    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Elimination> eliminations;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "MATIERE_CLASSE",
             joinColumns = @JoinColumn(name = "MATIERE_ID"),
             inverseJoinColumns = @JoinColumn(name = "CLASSE_ID"))
     private List<Classe> classes;
 
+    @Override
+    public String toString() {
+        return "Matiere{" +
+                "id=" + id +
+                ", libel='" + libel + '\'' +
+                ", numberHours=" + numberHours +
+                ", permit=" + permit +
+                ", abscences=" + abscences +
+                ", eliminations=" + eliminations +
+                ", classes=" + classes +
+                '}';
+    }
 }

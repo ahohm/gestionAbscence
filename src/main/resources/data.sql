@@ -3,20 +3,20 @@ INSERT INTO CLASSE (ID, LIBEL, NOM_COMPLET ) VALUES ( 1, 'glsi-a', 'CII-GLSI-A')
 INSERT INTO CLASSE (ID, LIBEL, NOM_COMPLET ) VALUES ( 2, 'glsi-b', 'CII-GLSI-B');
 
 -- create some student
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00000','hmaier'  ,'ahmed'    , /**/'ahmed.hmayer@gmail.com','1990-10-02', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00001','torkani' ,'malik'    , /**/'Malik.torkhani96@gmail.com','1991-11-27', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00002','moadeb'  ,'tarek'    , /**/'triber666@hotmail.com','1992-12-15', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00003','nasri'   ,'hatem'    , /**/'nasrih133@gmail.com','1993-01-20', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00004','tlili'   ,'lynn'     , 'tlili.lynn@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00005','hatour'  ,'amel'     , 'hatour.amel@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00006','madyouni','ghassen'  , 'madyouni.ghassen@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00007','chahbi'  ,'ali'      , 'chahbi.ali@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00008','kamoun'  ,'sabrin'   , 'kamoun.sabrine@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00009','grami'   ,'moez'     , 'grami.moez@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00010','daouda'  ,'abdo'     , /**/'abdourahime336@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00011','belaid'  ,'saief'    , 'belaid.saied@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00012','makhlouf','wajdi'    , 'makhlouf.wajdi@gmail.com','1994-02-10', 2);
-INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID ) VALUES ( '00013','kilani'  ,'raniya'   , 'raniya.kilani@gmail.com','1994-02-10', 2);
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00000','hmaier'  ,'ahmed'    , /**/'ahmed.hmayer@gmail.com','1990-10-02', 2 , '+21627119665');
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00001','torkani' ,'malik'    , /**/'ahmed.hmayer@gmail.com','1991-11-27', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00002','moadeb'  ,'tarek'    , /**/'ahmed.hmayer@gmail.com','1992-12-15', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00003','nasri'   ,'hatem'    , /**/'ahmed.hmayer@gmail.com','1993-01-20', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00004','tlili'   ,'lynn'     , 'ahmed.hmayer@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00005','hatour'  ,'amel'     , 'ahmed.hmayer@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00006','madyouni','ghassen'  , 'madyouni.ghassen@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00007','chahbi'  ,'ali'      , 'chahbi.ali@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00008','kamoun'  ,'sabrin'   , 'kamoun.sabrine@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00009','grami'   ,'moez'     , 'grami.moez@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00010','daouda'  ,'abdo'     , /**/'ahmed.hmayer@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00011','belaid'  ,'saief'    , 'belaid.saied@gmail.com','1994-02-10', 2  , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00012','makhlouf','wajdi'    , 'makhlouf.wajdi@gmail.com','1994-02-10', 2 , '27119665' );
+INSERT INTO ETUDIANT ( MATRICULE , NOM , PRENOM ,EMAIL , DATE_DE_NAISSANCE, CLASSE_ID , PHONE_NUMBER ) VALUES ( '00013','kilani'  ,'raniya'   , 'raniya.kilani@gmail.com','1994-02-10', 2 , '27119665' );
 
 -- create 13 modules
 INSERT INTO MATIERE (ID, LIBEL, NUMBER_HOURS , PERMIT ) VALUES ( 1, 'Programmation JEE', 41 , 15 );
@@ -161,3 +161,97 @@ INSERT INTO ABSCENCE (ID, DATE, CLASSE_ID, MATIERE_ID, ETUDIANT_MATRICULE ) VALU
 INSERT INTO ABSCENCE (ID, DATE, CLASSE_ID, MATIERE_ID, ETUDIANT_MATRICULE ) VALUES ( 65, '2019-09-09', 2, 3, '00001');
 INSERT INTO ABSCENCE (ID, DATE, CLASSE_ID, MATIERE_ID, ETUDIANT_MATRICULE ) VALUES ( 66, '2019-09-09', 2, 3, '00001');
 INSERT INTO ABSCENCE (ID, DATE, CLASSE_ID, MATIERE_ID, ETUDIANT_MATRICULE ) VALUES ( 67, '2019-09-09', 2, 3, '00001');
+
+/************************************/
+
+-- -- Create table
+-- create table APP_USER
+-- (
+--   USER_ID           BIGINT not null,
+--   USER_NAME         VARCHAR(36) not null,
+--   ENCRYTED_PASSWORD VARCHAR(128) not null,
+--   ENABLED           BIT not null
+-- ) ;
+-- --
+-- alter table APP_USER
+--   add constraint APP_USER_PK primary key (USER_ID);
+--
+-- alter table APP_USER
+--   add constraint APP_USER_UK unique (USER_NAME);
+--
+--
+-- -- Create table
+-- create table APP_ROLE
+-- (
+--   ROLE_ID   BIGINT not null,
+--   ROLE_NAME VARCHAR(30) not null
+-- ) ;
+-- --
+-- alter table APP_ROLE
+--   add constraint APP_ROLE_PK primary key (ROLE_ID);
+--
+-- alter table APP_ROLE
+--   add constraint APP_ROLE_UK unique (ROLE_NAME);
+--
+--
+-- -- Create table
+-- create table USER_ROLE
+-- (
+--   ID      BIGINT not null,
+--   USER_ID BIGINT not null,
+--   ROLE_ID BIGINT not null
+-- );
+-- --
+-- alter table USER_ROLE
+--   add constraint USER_ROLE_PK primary key (ID);
+--
+-- alter table USER_ROLE
+--   add constraint USER_ROLE_UK unique (USER_ID, ROLE_ID);
+--
+-- alter table USER_ROLE
+--   add constraint USER_ROLE_FK1 foreign key (USER_ID)
+--   references APP_USER (USER_ID);
+--
+-- alter table USER_ROLE
+--   add constraint USER_ROLE_FK2 foreign key (ROLE_ID)
+--   references APP_ROLE (ROLE_ID);
+--
+--
+-- Used by Spring Remember Me API.
+CREATE TABLE Persistent_Logins (
+
+    username varchar(64) not null,
+    series varchar(64) not null,
+    token varchar(64) not null,
+    last_used timestamp not null,
+    PRIMARY KEY (series)
+
+);
+
+--------------------------------------
+
+insert into App_User (USER_ID, USER_NAME, ENCRYTED_PASSWORD, ENABLED)
+values (2, 'dbuser1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
+
+insert into App_User (USER_ID, USER_NAME, ENCRYTED_PASSWORD, ENABLED)
+values (1, 'dbadmin1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
+
+---
+
+insert into app_role (ROLE_ID, ROLE_NAME)
+values (1, 'ROLE_ADMIN');
+
+insert into app_role (ROLE_ID, ROLE_NAME)
+values (2, 'ROLE_USER');
+
+---
+
+insert into user_role (ID, USER_ID, ROLE_ID)
+values (1, 1, 1);
+
+insert into user_role (ID, USER_ID, ROLE_ID)
+values (2, 1, 2);
+
+insert into user_role (ID, USER_ID, ROLE_ID)
+values (3, 2, 2);
+---

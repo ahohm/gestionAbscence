@@ -34,13 +34,19 @@ public class EtudiantService {
         return etudiantDao.findByMatricule(matricule);
     }
 
-    public Etudiant update(String matricule, Etudiant etudiant){
-        return etudiantDao.save(etudiant);
+    public Etudiant update(long classeid, Etudiant etudiant){
+
+        return this.save(etudiant, classeid);
     }
 
-    public void delete(String matricule){
+    public boolean delete(String matricule){
         Etudiant etudiant = getOneById(matricule).get();
-        etudiantDao.delete(etudiant);
+        try {
+            etudiantDao.delete(etudiant);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 }

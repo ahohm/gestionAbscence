@@ -19,7 +19,7 @@ public class ClasseCtrl {
 
 
     @PostMapping("/add")
-    public ResponseEntity<Classe> add(@Valid @RequestBody Classe classe){
+    public ResponseEntity<Classe> add(@RequestBody Classe classe){
         try{
             return new ResponseEntity(classeService.save(classe), HttpStatus.OK);
         }

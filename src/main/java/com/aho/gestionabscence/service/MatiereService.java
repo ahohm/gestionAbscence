@@ -36,7 +36,7 @@ public class MatiereService {
         matiereDao.delete(matiere);
     }
 
-//    public List<Matiere> findByClasse(List<Classe> classes){
-//        return matiereDao.findByClassesEquals(classes);
-//    }
+    public List<Matiere> findByClasse(Classe classe){
+        return matiereDao.findAllByClasses(classe);
+    }
 }
